@@ -26,7 +26,7 @@ const TextEditor =()=>
   const {id:documentId} = useParams();
   const[socket,setSocket]=useState();
   const[quill,setQuill]=useState();
-  const {authUser,isShareSelected,setCurrentQuill} = useAppstore();
+  const {authUser,isShareSelected} = useAppstore();
   const {setCurrentDocId} = useAppstore();
 
   useEffect(()=>{
@@ -116,7 +116,6 @@ const TextEditor =()=>
     q.enable(false);
     q.setText("Loading..");
     setQuill(q);
-    setCurrentQuill(q);
 
     },[])
    
