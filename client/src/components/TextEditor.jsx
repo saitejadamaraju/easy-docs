@@ -94,7 +94,7 @@ const TextEditor =()=>
 
   useEffect(()=>{
    
-    const s = io("http://localhost:5000");
+    const s = io("https://easy-docs.onrender.com");
     setSocket(s);
 
     return ()=>{

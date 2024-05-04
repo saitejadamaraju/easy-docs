@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import useAppstore from "../zustand/useAppstore";
 import useLogout from "../hooks/useLogout";
 import { FaUserCircle } from "react-icons/fa";
-import {  useEffect, useState } from "react";
+import { useState } from "react";
 
 
 
