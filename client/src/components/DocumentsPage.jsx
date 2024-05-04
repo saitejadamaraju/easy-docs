@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import useDocuments from "../hooks/useDocuments";
 import BlankDocument from "./BlankDocument";
 import { BsThreeDotsVertical } from "react-icons/bs";
@@ -9,16 +9,28 @@ import useAppstore from "../zustand/useAppstore";
 
 const DocumentsPage= () => {
 
-    const {loading,documents} = useDocuments();
-    const {isModifySelected,setIsModifySelected,setSelectedDocument} = useAppstore();
+    
+    const {getDocuments}=useDocuments();
+    const {isModifySelected,setIsModifySelected,setSelectedDocument,documents} = useAppstore();
+    const [reload,setReload]=useState('');
 
+    useEffect(()=>
+    {
+        const fetchdocs = async()=>
+        {
+            await getDocuments();
+        }
+        
+        fetchdocs();
 
-
+    },[reload])
+    
     const handleMenuClick = (event, doc) => 
     {
         event.preventDefault();
         setIsModifySelected(true);
         setSelectedDocument(doc);
+        
     }
 
     const selectDocument = (event, doc) => 
@@ -34,7 +46,7 @@ const DocumentsPage= () => {
             { isModifySelected && 
                 (
                     <div className='flex items-center justify-center relative'>
-                        <ModifyCard/>
+                        <ModifyCard setReload={setReload}/>
                     </div>
                 )
            }

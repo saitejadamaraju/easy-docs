@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import useAppstore from "../zustand/useAppstore";
 
 const useDocuments = () =>{
 
     const [loading,setLoading]=useState(false);
-    const [documents,setDocuments]=useState([]);
+    const {setdocuments}=useAppstore();
 
-    useEffect(()=>{
+    
 
         const getDocuments = async()=>{
 
@@ -20,7 +21,7 @@ const useDocuments = () =>{
                 {
                     throw new Error(data.error);
                 }
-                setDocuments(data.message);   
+                setdocuments(data.message);   
                 //console.log("documents data is ",data);           
             } catch (error) {
                 toast.error(error.message);
@@ -30,13 +31,8 @@ const useDocuments = () =>{
                 setLoading(false);
             }
         }
-
-        getDocuments();
-
-    },[])
-
-     return {loading,documents};
-
+    
+        return {getDocuments}
 }
 
 export default useDocuments;

@@ -12,8 +12,8 @@ const useAppstore = create((set) => ({
 	setIsModifySelected:(isModifySelected) => set({isModifySelected}),
 	selectedDocument:null,
 	setSelectedDocument:(selectedDocument) => set({selectedDocument}),
-	currentQuill:null,
-	setCurrentQuill:(currentQuill) => set({currentQuill})
+	documents:null,
+	setdocuments:(documents) => set({documents}),
 })
 )
 

@@ -1,19 +1,16 @@
 import { useRef, useState } from "react";
 import useAppstore from "../zustand/useAppstore"
 import { RxCross1 } from "react-icons/rx";
-import { IoMdDownload } from "react-icons/io";
 import useModifyDocuments from "../hooks/useModifyDocument";
 import toast from "react-hot-toast";
-import jsPDF from 'jspdf';
-import {saveAs} from 'file-saver';
 
-const ModifyCard = () => {
+const ModifyCard = ({setReload}) => {
 
     const {setIsModifySelected,selectedDocument} = useAppstore();
-    const {renameDocument,deleteDocument,downloadDocument} = useModifyDocuments();
+    const {renameDocument,deleteDocument} = useModifyDocuments();
     const [isRename,setIsRename] = useState(false);
     const [isDelete,setIsDelete] =  useState(false);
-    const [isDownload,setIsDownload] = useState(false);
+    //const [isDownload,setIsDownload] = useState(false);
 
     const nameRef= useRef();
     const deleteNameRef=useRef();
@@ -23,6 +20,8 @@ const ModifyCard = () => {
         await renameDocument(selectedDocument?._id,nameRef.current.value);
         setIsRename(false);
         setIsModifySelected(false);
+        setReload('renamed');
+        
     }
 
     const deleteDoc = async () =>
@@ -39,31 +38,12 @@ const ModifyCard = () => {
 
        setIsDelete(false);
        setIsModifySelected(false);
+       setReload('deleted');
+       
     }
 
-    // const download = async () =>
-    // {
-    //   try {
-    //     const response = await fetch('/api/user/document', {
-    //         method: 'POST',
-    //         headers: { "Content-Type": "application/pdf" },
-    //         body: JSON.stringify({ docId: selectedDocument._id })
-    //     });
-
-    //     if (!response.ok) {
-    //         throw new Error('Failed to download document');
-    //     }
-
-    //     const blob = await response.blob();
-    //     console.log("blob data is",blob);
-    //     saveAs(blob, `${selectedDocument?.name}.pdf`);
-    // } catch (error) {
-    //     console.error('Error downloading document:', error);
-    //     toast.error(error.message);
-    // }
-      
-    // }
     
+
     return(
 
         <div className='w-[450px] h-[300px] bg-white border border-solid hover:border-gray-600 rounded-lg absolute z-10 top-[50%] shadow-lg'>
