@@ -16,23 +16,23 @@ function App() {
   const {authUser} = useAppstore();
   const [isDesktop, setIsDesktop] = useState(true);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth > 1024); // Adjust the threshold according to your preference
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsDesktop(window.innerWidth > 1024); // Adjust the threshold according to your preference
+  //   };
 
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Call it initially to set the state
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  //   window.addEventListener("resize", handleResize);
+  //   handleResize(); // Call it initially to set the state
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
-  if (!isDesktop) {
-    return (
-      <div className="text-center bg-red-500 text-white p-2">
-        Please open this application on a desktop for a better experience.We are working on mobile version.
-      </div>
-    );
-  }
+  // if (!isDesktop) {
+  //   return (
+  //     <div className="text-center bg-red-500 text-white p-2">
+  //       Please open this application on a desktop for a better experience.We are working on mobile version.
+  //     </div>
+  //   );
+  // }
   
 
   return (

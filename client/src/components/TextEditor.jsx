@@ -125,7 +125,7 @@ const TextEditor =()=>
      <div className=''>
        <TextEditorHeader/>
        {isShareSelected && <div className='flex items-center justify-center relative'><ShareCard/></div>}
-       <div className="container" ref={wrapperRef}></div>
+       <div id="container" className="m-2" ref={wrapperRef}></div>
      </div>
 
     

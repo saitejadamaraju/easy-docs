@@ -46,7 +46,7 @@ const ModifyCard = ({setReload}) => {
 
     return(
 
-        <div className='w-[450px] h-[300px] bg-white border border-solid hover:border-gray-600 rounded-lg absolute z-10 top-[50%] shadow-lg'>
+        <div className='w-[300px] sm:w-[350px] h-[300px] md:w-[450px] bg-white border border-solid hover:border-gray-600 rounded-lg absolute z-10 top-[50%] shadow-lg'>
             <div className='flex flex-col mx-2 my-1'>
             
               {/* cross icon */}
